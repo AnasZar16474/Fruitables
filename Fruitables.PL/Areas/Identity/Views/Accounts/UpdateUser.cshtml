@@ -1,0 +1,30 @@
+﻿@model DisplayUsersViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <h2>Edit Employee</h2>
+    <form asp-controller="Accounts" asp-action="UpdateUser">
+        <div class="my-2">
+            <label asp-for="Name">Name</label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+        <input type="hidden" asp-for="id" value="@Model.id" class="form-control" />
+        <div class="my-2">
+            <label asp-for="Gender">Gender</label>
+            <input asp-for="Gender" class="form-control" />
+        </div>
+        <div class="my-2">
+            <label asp-for="City">City</label>
+            <input asp-for="City" class="form-control" />
+        </div>
+
+        <input type="submit" class="btn btn-danger" value="Register" />
+    </form>
+</body>
+</html>

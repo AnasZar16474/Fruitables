@@ -1,0 +1,37 @@
+﻿@model IEnumerable<RoleViewModel>
+
+@{
+    ViewData["Title"] = "RoleView";
+}
+
+<h1>RoleView</h1>
+
+<p>
+    <a asp-action="CreateRole" asp-controller="Accounts">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleName)
+            </th>
+            <th> DeleteItem</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleName)
+                </td>
+                @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+                {
+                    <td><a asp-action="DeleteRole" asp-controller="Accounts" asp-route-Id="@item.RoleName">Delete</a></td>
+                }
+
+
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,21 @@
+﻿@model ProductDeleteVM
+@section MainHeader {
+    Delete
+}
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title"> Delete </h3>
+        </div>
+        <div class="card-body">
+            <p class="footer danger">Are you Sure to Delete @Model.Name</p>
+        </div>
+        <div class="card-footer">
+            <form asp-controller="Products" asp-action="DeletedConfirmed">
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" class="btn btn-danger" value="Delete" />
+                <a class="btn btn-secondary" asp-controller="Products" asp-action="Display">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>

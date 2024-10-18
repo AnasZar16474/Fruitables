@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ProductDisplayVM>
+@section MainHeader {
+    Display Products
+}
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title"> All Products Fruits</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Operation</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.Price</td>
+                            <td>@item.Description</td>
+                            <td>
+                                <a class="btn btn-warning" asp-route-Id=@item.Id asp-action="Details" asp-controller="Products">Details</a>
+                                <a class="btn btn-danger" asp-route-Id=@item.Id asp-action="Delete" asp-controller="Products">Delete</a>
+                                <a class="btn btn-info" asp-route-Id=@item.Id asp-action="Edit" asp-controller="Products">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer clearfix">
+            <ul class="pagination pagination-sm m-0 float-right">
+                <li class="page-item"><a class="page-link" href="#">«</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">»</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- /.card -->
+</div>

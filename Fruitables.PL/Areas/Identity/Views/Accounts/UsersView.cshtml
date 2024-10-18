@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DisplayUsersViewModel>
+
+@{
+    ViewData["Title"] = "UsersView";
+}
+
+<h1>UsersView</h1>
+
+<p>
+    <a asp-action="Register" asp-controller="Accounts">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>Roles</th>
+            <th> Change</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Gender
+                </td>
+                <td>
+                    @item.City
+                </td>
+                <td>
+                    @foreach (var Result in item.RoleName)
+                    {
+                        <span>@Result</span>
+                    }
+                </td>
+                @if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+                {
+                    <td>
+                        <a asp-action="DeleteUser" asp-controller="Accounts" asp-route-Id="@item.Name">Delete</a>
+                        <a asp-action="UpdateUser" asp-controller="Accounts" asp-route-Id="@item.Name">Edit</a>
+                        <a asp-action="ChangeRoles" asp-controller="Accounts" asp-route-Id="@item.Name">ChangeRoles</a>
+                    </td>
+
+                }
+
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+

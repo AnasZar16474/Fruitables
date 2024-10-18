@@ -1,0 +1,51 @@
+﻿@model ProductCreateVM
+@section MainHeader {
+    Create Products
+}
+<div class="col-md-12">
+    <!-- general form elements -->
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title"> Create </h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form asp-controller="Products" asp-action="Create" enctype="multipart/form-data">
+            <div class="card-body">
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control" placeholder="Enter Name Services">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <input asp-for="Description" class="form-control" placeholder="Enter Name Description">
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price"></label>
+                    <input asp-for="Price" class="form-control" placeholder="Enter Name Description">
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="Type">Product Type</label>
+                    <!-- إنشاء قائمة منسدلة لاختيار النوع من enum ProductType -->
+                    @Html.DropDownListFor(m => m.Type, (SelectList)ViewBag.ProductTypes, "Select Product Type", new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label asp-for="Image"></label>
+                    <input asp-for="Image" class="form-control" placeholder="Enter Name Description">
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+
+
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /.card -->
